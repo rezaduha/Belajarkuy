@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Belajarkuy</string>
+    <string name="title_module">Module</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_home">Home</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="user_agreement">By Tapping Continue, I agree to Belajarkuy!’s Terms &amp; Conditions and Privacy policy.</string>
 </resources>
