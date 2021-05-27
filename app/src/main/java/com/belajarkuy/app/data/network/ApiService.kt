@@ -11,7 +11,7 @@ interface ApiService {
     @GET("/progress/{user_id}")
     suspend fun getProgress(@Path("user_id") id: Int): ProgressResponse
 
-    @GET("/module/list")
+    @GET("/modules")
     suspend fun getAllModule(): ModuleResponse
 
     @GET("/module/{module_id}")
