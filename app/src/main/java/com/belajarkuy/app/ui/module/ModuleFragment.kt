@@ -72,4 +72,9 @@ class ModuleFragment : Fragment(), ModuleAdapter.Listener, GeneralView {
     override fun hideLoading() {
 
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }
