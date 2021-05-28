@@ -33,7 +33,7 @@ class ModuleFragment : Fragment(), ModuleAdapter.Listener, GeneralView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerView()
-        loadDataFromApi()
+        loadDataModule()
     }
 
     private fun setRecyclerView() {
@@ -45,7 +45,7 @@ class ModuleFragment : Fragment(), ModuleAdapter.Listener, GeneralView {
         }
     }
 
-    private fun loadDataFromApi() {
+    private fun loadDataModule() {
         presenter = AllPresenter(this, requireContext())
         presenter.getAllModule()
     }
@@ -54,19 +54,19 @@ class ModuleFragment : Fragment(), ModuleAdapter.Listener, GeneralView {
         Toast.makeText(context, modules.id.toString(), Toast.LENGTH_SHORT).show()
     }
 
-    override fun showLoading() {
-
+    override fun success(response: Any) {
+        val responseData = response as ModuleResponse
+        moduleList.clear()
+        moduleList.addAll(responseData.modules)
+        moduleAdapter.notifyDataSetChanged()
     }
 
     override fun error(error: Throwable?) {
 
     }
 
-    override fun success(response: Any) {
-        val responseData = response as ModuleResponse
-        moduleList.clear()
-        moduleList.addAll(responseData.modules)
-        moduleAdapter.notifyDataSetChanged()
+    override fun showLoading() {
+
     }
 
     override fun hideLoading() {
