@@ -11,14 +11,14 @@ data class ProgressResponse(
 	val message: String,
 
 	@field:SerializedName("results")
-	val results: List<ResultsItem>,
+	val results: List<CompetencyItem>,
 
 	@field:SerializedName("status")
 	val status: Boolean
 ) : Parcelable
 
 @Parcelize
-data class ResultsItem(
+data class CompetencyItem(
 
 	@field:SerializedName("material")
 	val material: List<String>,

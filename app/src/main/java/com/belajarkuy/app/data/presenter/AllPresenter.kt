@@ -25,10 +25,10 @@ class AllPresenter(private val view: GeneralView, private val context: Context) 
         }
     }
 
-    fun getProgress(userId: Int) {
+    fun getCompetency(userId: Int) {
         view.showLoading()
         CoroutineScope(Dispatchers.Main).launch {
-            val request = api.getProgress(userId)
+            val request = api.getCompetency(userId)
             try {
                 val response = request
                 view.success(response)

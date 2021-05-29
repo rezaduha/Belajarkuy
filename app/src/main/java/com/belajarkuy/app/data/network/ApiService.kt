@@ -8,8 +8,8 @@ interface ApiService {
     @POST("/auth")
     suspend fun login(@Body authRequest: AuthRequest): AuthRequest
 
-    @GET("/progress/{user_id}")
-    suspend fun getProgress(@Path("user_id") id: Int): ProgressResponse
+    @GET("/competency/{user_id}")
+    suspend fun getCompetency(@Path("user_id") id: Int): ProgressResponse
 
     @GET("/modules")
     suspend fun getAllModule(): ModuleResponse
