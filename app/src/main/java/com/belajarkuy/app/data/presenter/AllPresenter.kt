@@ -64,6 +64,19 @@ class AllPresenter(private val view: GeneralView, private val context: Context) 
         }
     }
 
+    fun getRecommendationBySubject(userId: Int, subject: String) {
+        view.showLoading()
+        CoroutineScope(Dispatchers.Main).launch {
+            val request = api.getRecommendationBySubject(userId, subject)
+            try {
+                val response = request
+                view.success(response)
+            } catch (e: Exception) {
+                view.error(e)
+            }
+        }
+    }
+
     fun submitAnswer(moduleId: Int, moduleRequest: List<ModuleRequest>) {
         view.showLoading()
         CoroutineScope(Dispatchers.Main).launch {
