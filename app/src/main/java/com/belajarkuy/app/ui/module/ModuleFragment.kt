@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.belajarkuy.app.data.model.ModuleResponse
 import com.belajarkuy.app.data.model.ModulesItem
-import com.belajarkuy.app.data.presenter.AllPresenter
+import com.belajarkuy.app.data.presenter.MainPresenter
 import com.belajarkuy.app.databinding.FragmentModuleBinding
 import com.belajarkuy.app.view.GeneralView
 
@@ -18,7 +18,7 @@ class ModuleFragment : Fragment(), ModuleAdapter.Listener, GeneralView {
     private var _binding: FragmentModuleBinding? = null
     private val binding get() = _binding!!
     private lateinit var moduleAdapter: ModuleAdapter
-    private lateinit var presenter: AllPresenter
+    private lateinit var presenter: MainPresenter
     private var moduleList: MutableList<ModulesItem> = mutableListOf()
 
     override fun onCreateView(
@@ -46,7 +46,7 @@ class ModuleFragment : Fragment(), ModuleAdapter.Listener, GeneralView {
     }
 
     private fun loadDataModule() {
-        presenter = AllPresenter(this, requireContext())
+        presenter = MainPresenter(this, requireContext())
         presenter.getAllModule()
     }
 
