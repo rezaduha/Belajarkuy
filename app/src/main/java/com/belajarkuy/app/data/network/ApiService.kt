@@ -9,13 +9,16 @@ interface ApiService {
     suspend fun login(@Body authRequest: AuthRequest): AuthRequest
 
     @GET("/competency/{user_id}")
-    suspend fun getCompetency(@Path("user_id") id: Int): ProgressResponse
+    suspend fun getCompetency(@Path("user_id") id: Int): CompetencyResponse
 
     @GET("/modules")
     suspend fun getAllModule(): ModuleResponse
 
     @GET("/module/{module_id}")
     suspend fun getModuleById(@Path("module_id") moduleId: Int): DetailModuleResponse
+
+    @GET("/module/{user_id}/{subject}")
+    suspend fun getRecommendationBySubject(@Path("user_id") id: Int, @Path("subject") subject: String)
 
     @POST("/module/{module_id}")
     suspend fun submitAnswer(@Path("module_id") moduleId: Int, @Body moduleRequest: List<ModuleRequest>): ModuleRequest
