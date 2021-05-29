@@ -9,7 +9,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class AllPresenter(private val view: GeneralView, private val context: Context) {
+class MainPresenter(private val view: GeneralView, private val context: Context) {
 
     private val api = ApiConfig.getApiService(context)
 
