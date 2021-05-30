@@ -8,17 +8,17 @@ import kotlinx.parcelize.Parcelize
 data class AuthRequest(
 
 	@field:SerializedName("name")
-	val name: String,
+	val name: String?,
 
 	@field:SerializedName("Id")
-	val id: Int,
+	val id: Int?,
 
 	@field:SerializedName("photo_url")
-	val photoUrl: String,
+	val photoUrl: String?,
 
 	@field:SerializedName("email")
-	val email: String,
+	val email: String?,
 
 	@field:SerializedName("token")
-	val token: String
+	val token: String?
 ) : Parcelable
