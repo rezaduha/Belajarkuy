@@ -11,7 +11,7 @@ data class AuthRequest(
 	val name: String?,
 
 	@field:SerializedName("Id")
-	val id: Int?,
+	val id: String?,
 
 	@field:SerializedName("photo_url")
 	val photoUrl: String?,
