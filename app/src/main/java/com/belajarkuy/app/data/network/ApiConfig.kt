@@ -8,7 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
-    const val BASE_URL = ""
+    const val BASE_URL = "https://mocki.io/v1/"
 
     fun getApiService(context: Context): ApiService {
         val token = Preference.getToken(context)
