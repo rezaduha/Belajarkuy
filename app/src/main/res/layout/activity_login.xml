@@ -11,11 +11,11 @@
         style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:paddingVertical="12dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:paddingVertical="8dp"
         android:text="@string/continue_with_google"
         android:textAllCaps="false"
         android:textColor="@color/dark_400"
@@ -36,11 +36,23 @@
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="@string/user_agreement"
+        android:textColor="@color/dark_400"
         app:layout_constraintEnd_toEndOf="@+id/btn_continue_w_google"
         app:layout_constraintStart_toStartOf="@+id/btn_continue_w_google"
         app:layout_constraintTop_toBottomOf="@+id/btn_continue_w_google"
-        app:lineHeight="24dp" />
+        app:lineHeight="18dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="256dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_continue_w_google"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_logo_sm" />
 </androidx.constraintlayout.widget.ConstraintLayout>

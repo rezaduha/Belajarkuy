@@ -1,7 +1,7 @@
 package com.belajarkuy.app
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.belajarkuy.app.databinding.ActivityMainBinding
@@ -19,13 +19,12 @@ class MainActivity : AppCompatActivity() {
         val navHost = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         val navController = navHost.navController
         val navView: BottomNavigationView = binding.navView
-
-//        val appBarConfiguration = AppBarConfiguration(
-//            setOf(
-//                R.id.navigation_home, R.id.navigation_module, R.id.navigation_profile
-//            )
-//        )
-//        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        this.finishAffinity()
+        finishAndRemoveTask()
     }
 }

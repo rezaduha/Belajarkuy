@@ -5,4 +5,5 @@ interface GeneralView {
     fun error(error: Throwable?)
     fun showLoading()
     fun hideLoading()
+    fun empty()
 }

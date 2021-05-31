@@ -24,7 +24,7 @@ class ModuleFragment : Fragment(), ModuleAdapter.Listener, GeneralView {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentModuleBinding.inflate(inflater, container, false)
         return binding.root
@@ -66,11 +66,20 @@ class ModuleFragment : Fragment(), ModuleAdapter.Listener, GeneralView {
     }
 
     override fun showLoading() {
-
+        binding.rvModule.visibility = View.INVISIBLE
+        binding.progressModule.startShimmer()
     }
 
     override fun hideLoading() {
+        binding.rvModule.visibility = View.VISIBLE
+        binding.progressModule.stopShimmer()
+        binding.progressModule.visibility = View.GONE
+    }
 
+    override fun empty() {
+        /**
+        * ALWAYS NOT EMPTY
+        **/
     }
 
     override fun onDestroy() {

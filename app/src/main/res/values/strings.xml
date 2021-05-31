@@ -5,9 +5,11 @@
     <string name="title_home">Home</string>
     <string name="continue_with_google">Continue with Google</string>
     <string name="user_agreement">By Tapping Continue, I agree to Belajarkuy!’s Terms &amp; Conditions and Privacy policy.</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="total_questions">Total Pertanyaan : %s</string>
+    <string name="total_questions">Jumlah Soal : %s</string>
     <string name="duration">Durasi : %s</string>
     <string name="train_now">Train Now</string>
+    <string name="recommendation">Recommendation</string>
+    <string name="server_client_id">123731020049-e3if0kbsmlv2ok9jumk9o8jr29hieunh.apps.googleusercontent.com</string>
+    <string name="no_data">No Recommendation</string>
 </resources>
