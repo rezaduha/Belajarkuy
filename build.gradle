@@ -17,6 +17,7 @@ buildscript {
     ext.circle_iv_version = "3.1.0"
     ext.glide_version = "4.12.0"
     ext.shimmer_version = "0.5.0"
+    ext.lottie_version = "3.4.1"
     ext.mpchart_version = "v3.1.0"
 
     ext.retrofit_version = "2.9.0"
