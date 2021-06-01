@@ -1,5 +1,6 @@
 package com.belajarkuy.app.ui.module
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import com.belajarkuy.app.data.model.ModuleResponse
 import com.belajarkuy.app.data.model.ModulesItem
 import com.belajarkuy.app.data.presenter.MainPresenter
 import com.belajarkuy.app.databinding.FragmentModuleBinding
+import com.belajarkuy.app.ui.quiz.QuizActivity
 import com.belajarkuy.app.view.GeneralView
 
 class ModuleFragment : Fragment(), ModuleAdapter.Listener, GeneralView {
@@ -51,7 +53,7 @@ class ModuleFragment : Fragment(), ModuleAdapter.Listener, GeneralView {
     }
 
     override fun onClick(modules: ModulesItem) {
-        Toast.makeText(context, modules.id.toString(), Toast.LENGTH_SHORT).show()
+        startActivity(Intent(context, QuizActivity::class.java))
     }
 
     override fun success(response: Any) {

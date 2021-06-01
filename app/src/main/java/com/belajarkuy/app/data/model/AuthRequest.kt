@@ -7,11 +7,11 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class AuthRequest(
 
-	@field:SerializedName("name")
-	val name: String?,
-
 	@field:SerializedName("Id")
 	val id: String?,
+
+	@field:SerializedName("name")
+	val name: String?,
 
 	@field:SerializedName("photo_url")
 	val photoUrl: String?,

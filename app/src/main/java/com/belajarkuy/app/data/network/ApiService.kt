@@ -5,7 +5,7 @@ import retrofit2.http.*
 
 interface ApiService {
     @Headers("Content-Type: application/json")
-    @POST("/auth")
+    @POST("auth")
     suspend fun login(@Body authRequest: AuthRequest): AuthRequest
 
 //    @GET("/competency/{user_id}")
@@ -28,7 +28,7 @@ interface ApiService {
     // empty competency endpoint = 2176bcc5-3545-46f6-8e77-a3fb9031f7b2
     // not empty endpoint = e345a71a-e6e6-4246-b234-e9ef2b6b579b
     // just for testing =====================
-    @GET("2176bcc5-3545-46f6-8e77-a3fb9031f7b2")
+    @GET("e345a71a-e6e6-4246-b234-e9ef2b6b579b")
     suspend fun getCompetency(): CompetencyResponse
 
     @GET("d5845f7e-b404-4b5a-a54b-88b70207c41d")

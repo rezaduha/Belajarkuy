@@ -68,6 +68,7 @@ dependencies {
     implementation "com.facebook.shimmer:shimmer:$shimmer_version"
     implementation "com.airbnb.android:lottie:$lottie_version"
     implementation "com.github.PhilJay:MPAndroidChart:$mpchart_version"
+    implementation "androidx.viewpager2:viewpager2:$viewpager_version"
 
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
