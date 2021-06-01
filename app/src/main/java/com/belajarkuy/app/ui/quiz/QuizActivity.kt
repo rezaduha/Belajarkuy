@@ -1,17 +1,16 @@
 package com.belajarkuy.app.ui.quiz
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.View
-import com.belajarkuy.app.MainActivity
-import com.belajarkuy.app.R
 import com.belajarkuy.app.data.model.DetailModuleResponse
 import com.belajarkuy.app.data.model.QuestionsItem
 import com.belajarkuy.app.data.presenter.MainPresenter
 import com.belajarkuy.app.databinding.ActivityQuizBinding
 import com.belajarkuy.app.ui.home.HomeFragment
 import com.belajarkuy.app.view.GeneralView
+import java.util.concurrent.TimeUnit
 
 class QuizActivity : AppCompatActivity(), GeneralView {
 
@@ -34,6 +33,22 @@ class QuizActivity : AppCompatActivity(), GeneralView {
             fragObjects.arguments = bundle
             finish()
         }
+
+        val timer = object: CountDownTimer(200000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                binding.tvTimer.text = String.format("%d min, %d sec",
+                    TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
+                    TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
+                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))
+                )
+            }
+
+            override fun onFinish() {
+                // post all answers to backend
+                finish()
+            }
+        }
+        timer.start()
     }
 
     private fun setRecyclerView() {
