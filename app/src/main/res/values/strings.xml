@@ -12,4 +12,7 @@
     <string name="recommendation">Recommendation</string>
     <string name="server_client_id">123731020049-e3if0kbsmlv2ok9jumk9o8jr29hieunh.apps.googleusercontent.com</string>
     <string name="no_data">No Recommendation</string>
+    <string name="start_now">Mulai Sekarang?</string>
+    <string name="cancel">Batal</string>
+    <string name="accept">Ok</string>
 </resources>

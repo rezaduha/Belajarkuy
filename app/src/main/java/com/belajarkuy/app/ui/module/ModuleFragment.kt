@@ -5,15 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.belajarkuy.app.R
 import com.belajarkuy.app.data.model.ModuleResponse
 import com.belajarkuy.app.data.model.ModulesItem
 import com.belajarkuy.app.data.presenter.MainPresenter
 import com.belajarkuy.app.databinding.FragmentModuleBinding
 import com.belajarkuy.app.ui.quiz.QuizActivity
 import com.belajarkuy.app.view.GeneralView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class ModuleFragment : Fragment(), ModuleAdapter.Listener, GeneralView {
 
@@ -53,7 +54,13 @@ class ModuleFragment : Fragment(), ModuleAdapter.Listener, GeneralView {
     }
 
     override fun onClick(modules: ModulesItem) {
-        startActivity(Intent(context, QuizActivity::class.java))
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(resources.getString(R.string.start_now))
+            .setNegativeButton(resources.getString(R.string.cancel), null)
+            .setPositiveButton(resources.getString(R.string.accept)) { _, _ ->
+                startActivity(Intent(context, QuizActivity::class.java))
+            }
+            .show()
     }
 
     override fun success(response: Any) {

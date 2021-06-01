@@ -25,12 +25,12 @@ class ModuleAdapter(
 
     inner class ModuleViewHolder(private val binding: ItemModuleBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(data: ModulesItem, listener: Listener) {
-            val color = Color.argb(255, Random.nextInt(210), Random.nextInt(210), Random.nextInt(210))
+//            val color = Color.argb(255, Random.nextInt(210), Random.nextInt(210), Random.nextInt(210))
             with(binding) {
                 tvSubject.text = data.subject
                 tvTotalQuestion.text = itemView.context.resources.getString(R.string.total_questions, data.totalQuestions.toString())
                 tvDuration.text = itemView.context.resources.getString(R.string.duration, data.duration.toString())
-                cvModule.setCardBackgroundColor(color)
+//                cvModule.setCardBackgroundColor(color)
             }
             itemView.setOnClickListener {
                 listener.onClick(data)
