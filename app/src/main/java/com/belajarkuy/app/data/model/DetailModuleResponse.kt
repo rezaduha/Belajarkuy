@@ -30,5 +30,5 @@ data class QuestionsItem(
 	val correctAnswer: String,
 
 	@field:SerializedName("id")
-	val id: Int
+	val id: String
 ) : Parcelable
