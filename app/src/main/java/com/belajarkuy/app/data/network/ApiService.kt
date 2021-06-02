@@ -9,7 +9,7 @@ interface ApiService {
     suspend fun login(@Body authRequest: AuthRequest): AuthRequest
 
     @GET("competency/{user_id}")
-    suspend fun getCompetency(@Path("user_id") userId: Int): CompetencyResponse
+    suspend fun getCompetency(@Path("user_id") userId: String): CompetencyResponse
 
     @GET("module/list")
     suspend fun getAllModule(): ModuleResponse

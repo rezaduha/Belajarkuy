@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
-    const val BASE_URL = "belajarkuy-314312.et.r.appspot.com/api/"
+    const val BASE_URL = "https://belajarkuy-314312.et.r.appspot.com/api/"
     const val NEWS_URL = "https://newsapi.org/v2/"
 
     fun getApiService(): ApiService {

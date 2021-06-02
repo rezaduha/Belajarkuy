@@ -49,7 +49,7 @@ class ModuleFragment : Fragment(), ModuleAdapter.Listener, GeneralView {
     }
 
     private fun loadDataModule() {
-        presenter = MainPresenter(this, requireContext())
+        presenter = MainPresenter(this)
         presenter.getAllModule()
     }
 
@@ -58,7 +58,9 @@ class ModuleFragment : Fragment(), ModuleAdapter.Listener, GeneralView {
             .setTitle(resources.getString(R.string.start_now))
             .setNegativeButton(resources.getString(R.string.cancel), null)
             .setPositiveButton(resources.getString(R.string.accept)) { _, _ ->
-                startActivity(Intent(context, QuizActivity::class.java))
+                val intent = Intent(context, QuizActivity::class.java)
+                intent.putExtra(QuizActivity.EXTRA_ID, modules.id)
+                startActivity(intent)
             }
             .show()
     }

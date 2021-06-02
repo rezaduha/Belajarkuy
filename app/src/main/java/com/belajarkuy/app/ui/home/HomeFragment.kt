@@ -43,12 +43,20 @@ class HomeFragment : Fragment(), GeneralView, RecommendationAdapter.Listener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getSignInAccount()
         setRecyclerView()
         loadDataCompetency()
     }
 
-    private fun getSignInAccount() {
+    private fun setRecyclerView() {
+        recommendationAdapter = RecommendationAdapter(recommendationList, this)
+        with(binding.rvRecommendation) {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            setHasFixedSize(true)
+            adapter = recommendationAdapter
+        }
+    }
+
+    private fun loadDataCompetency() {
         gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
             .build()
@@ -63,20 +71,9 @@ class HomeFragment : Fragment(), GeneralView, RecommendationAdapter.Listener {
                     .into(avatar)
             }
         }
-    }
 
-    private fun setRecyclerView() {
-        recommendationAdapter = RecommendationAdapter(recommendationList, this)
-        with(binding.rvRecommendation) {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            setHasFixedSize(true)
-            adapter = recommendationAdapter
-        }
-    }
-
-    private fun loadDataCompetency() {
-        presenter = MainPresenter(this, requireContext())
-        presenter.getCompetency()
+        presenter = MainPresenter(this)
+        presenter.getCompetency(acct?.id.toString())
     }
 
     override fun onClick(modules: CompetencyItem) {

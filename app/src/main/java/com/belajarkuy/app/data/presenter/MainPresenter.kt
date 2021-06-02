@@ -1,6 +1,5 @@
 package com.belajarkuy.app.data.presenter
 
-import android.content.Context
 import com.belajarkuy.app.data.model.AuthRequest
 import com.belajarkuy.app.data.model.ModuleRequest
 import com.belajarkuy.app.data.network.ApiConfig
@@ -9,17 +8,16 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MainPresenter(private val view: GeneralView, private val context: Context) {
+class MainPresenter(private val view: GeneralView) {
 
-    private val api = ApiConfig.getApiService(context)
+    private val api = ApiConfig.getApiService()
     private val newsApi = ApiConfig.getNewsApiService()
 
     fun continueWithGoogle(authRequest: AuthRequest) {
         CoroutineScope(Dispatchers.Main).launch {
-            val request = api.login(authRequest)
+            val data = api.login(authRequest)
             try {
-                val response = request
-                view.success(response)
+                view.success(data)
             }catch (e: Exception) {
                 view.error(e)
             }
@@ -27,102 +25,13 @@ class MainPresenter(private val view: GeneralView, private val context: Context)
         }
     }
 
-//    fun getCompetency(userId: Int) {
-//        view.showLoading()
-//        CoroutineScope(Dispatchers.Main).launch {
-//            val request = api.getCompetency(userId)
-//            try {
-//                val response = request
-//                view.success(response)
-//                if (response.results.isEmpty()) {
-//                    view.empty()
-//                }
-//            } catch (e: Exception) {
-//                view.error(e)
-//            }
-//            view.hideLoading()
-//        }
-//    }
-//
-//    fun getAllModule() {
-//        view.showLoading()
-//        CoroutineScope(Dispatchers.Main).launch {
-//            val request = api.getAllModule()
-//            try {
-//                val response = request
-//                view.success(response)
-//            } catch (e: Exception) {
-//                view.error(e)
-//            }
-//            view.hideLoading()
-//        }
-//    }
-//
-//    fun getModuleById(moduleId: Int) {
-//        view.showLoading()
-//        CoroutineScope(Dispatchers.Main).launch {
-//            val request = api.getModuleById(moduleId)
-//            try {
-//                val response = request
-//                view.success(response)
-//            } catch (e: Exception) {
-//                view.error(e)
-//            }
-//            view.hideLoading()
-//        }
-//    }
-
-    fun getRecommendationBySubject(userId: Int, subject: String) {
+    fun getCompetency(userId: String) {
         view.showLoading()
         CoroutineScope(Dispatchers.Main).launch {
-            val request = api.getRecommendationBySubject(userId, subject)
+            val data = api.getCompetency(userId)
             try {
-                val response = request
-                view.success(response)
-            } catch (e: Exception) {
-                view.error(e)
-            }
-            view.hideLoading()
-        }
-    }
-
-    fun submitAnswer(moduleId: Int, moduleRequest: List<ModuleRequest>) {
-        view.showLoading()
-        CoroutineScope(Dispatchers.Main).launch {
-            val request = api.submitAnswer(moduleId, moduleRequest)
-            try {
-                val response = request
-                view.success(response)
-            } catch (e: Exception) {
-                view.error(e)
-            }
-            view.hideLoading()
-        }
-    }
-
-    fun getNews() {
-        view.showLoading()
-        CoroutineScope(Dispatchers.Main).launch {
-            val request = newsApi.getNews()
-            try {
-                val response = request
-                view.success(response)
-            } catch (e: Exception) {
-                view.error(e)
-            }
-            view.hideLoading()
-        }
-    }
-
-    // just for testing
-    fun getCompetency() {
-        view.showLoading()
-        CoroutineScope(Dispatchers.Main).launch {
-            val request = api.getCompetency()
-            try {
-                val response = request
-                view.success(response)
-                if (response.results.isEmpty()) {
+                view.success(data)
+                if (data.results.isEmpty()) {
                     view.empty()
                 }
             } catch (e: Exception) {
@@ -135,10 +44,9 @@ class MainPresenter(private val view: GeneralView, private val context: Context)
     fun getAllModule() {
         view.showLoading()
         CoroutineScope(Dispatchers.Main).launch {
-            val request = api.getAllModule()
+            val data = api.getAllModule()
             try {
-                val response = request
-                view.success(response)
+                view.success(data)
             } catch (e: Exception) {
                 view.error(e)
             }
@@ -146,16 +54,55 @@ class MainPresenter(private val view: GeneralView, private val context: Context)
         }
     }
 
-    fun getModuleById() {
+    fun getModuleById(moduleId: Int) {
         view.showLoading()
         CoroutineScope(Dispatchers.Main).launch {
-            val request = api.getModuleById()
+            val data = api.getModuleById(moduleId)
             try {
-                val response = request
-                view.success(response)
+                view.success(data)
             } catch (e: Exception) {
                 view.error(e)
             }
+            view.hideLoading()
+        }
+    }
+
+    fun getRecommendationBySubject(userId: Int, subject: String) {
+        view.showLoading()
+        CoroutineScope(Dispatchers.Main).launch {
+            val data = api.getRecommendationBySubject(userId, subject)
+            try {
+                view.success(data)
+            } catch (e: Exception) {
+                view.error(e)
+            }
+            view.hideLoading()
+        }
+    }
+
+    fun submitAnswer(moduleId: Int, moduleRequest: List<ModuleRequest>) {
+        view.showLoading()
+        CoroutineScope(Dispatchers.Main).launch {
+            val data = api.submitAnswer(moduleId, moduleRequest)
+            try {
+                view.success(data)
+            } catch (e: Exception) {
+                view.error(e)
+            }
+            view.hideLoading()
+        }
+    }
+
+    fun getNews() {
+        view.showLoading()
+        CoroutineScope(Dispatchers.Main).launch {
+            val data = newsApi.getNews()
+            try {
+                view.success(data)
+            } catch (e: Exception) {
+                view.error(e)
+            }
+            view.hideLoading()
         }
     }
 }

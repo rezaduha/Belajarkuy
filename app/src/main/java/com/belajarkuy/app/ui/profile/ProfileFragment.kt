@@ -55,7 +55,7 @@ class ProfileFragment : Fragment(), NewsAdapter.Listener, GeneralView {
     }
 
     private fun loadDataNews() {
-        presenter = MainPresenter(this, requireContext())
+        presenter = MainPresenter(this)
         presenter.getNews()
     }
 

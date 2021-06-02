@@ -19,10 +19,16 @@ class QuizActivity : AppCompatActivity(), GeneralView {
     private lateinit var presenter: MainPresenter
     private var quizList: MutableList<QuestionsItem> = mutableListOf()
 
+    companion object {
+        const val EXTRA_ID = "extra_id"
+        var moduleId: Int = 0
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuizBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        moduleId = intent.getIntExtra(EXTRA_ID, 0)
         setRecyclerView()
         loadDataQuiz()
 
@@ -65,8 +71,8 @@ class QuizActivity : AppCompatActivity(), GeneralView {
     }
 
     private fun loadDataQuiz() {
-        presenter = MainPresenter(this, this)
-        presenter.getModuleById()
+        presenter = MainPresenter(this)
+        presenter.getModuleById(moduleId)
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {

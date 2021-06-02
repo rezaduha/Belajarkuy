@@ -3,6 +3,7 @@ package com.belajarkuy.app.ui.login
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.belajarkuy.app.MainActivity
 import com.belajarkuy.app.R
@@ -34,7 +35,7 @@ class LoginActivity : AppCompatActivity(), GeneralView {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        presenter = MainPresenter(this, this)
+        presenter = MainPresenter(this)
 
         gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.server_client_id))
@@ -73,13 +74,8 @@ class LoginActivity : AppCompatActivity(), GeneralView {
         try {
             val account = completedTask.getResult(ApiException::class.java)
             Preference.saveToken(this, account?.idToken!!)
-//            val authData = AuthRequest(account.displayName, account.id, account.photoUrl.toString(),  account.email, account.idToken)
-//            presenter.continueWithGoogle(authData)
-            Log.d("extra_token", account.id.toString())
-            Log.d("extra_token", account.email.toString())
-            Log.d("extra_token", account.displayName.toString())
-            Log.d("extra_token", account.photoUrl.toString())
-            Log.d("extra_token", account.idToken.toString())
+            val authData = AuthRequest(account.displayName, account.id, account.photoUrl.toString(),  account.email, account.idToken)
+            presenter.continueWithGoogle(authData)
             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
         } catch (e: ApiException) {
             Log.w("onFailure", "signInResult:failed code=" + e.statusCode)
