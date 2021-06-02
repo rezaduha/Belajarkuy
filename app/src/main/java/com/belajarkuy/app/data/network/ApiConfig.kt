@@ -9,6 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
     const val BASE_URL = "https://mocki.io/v1/"
+    const val NEWS_URL = "https://newsapi.org/v2/"
 
     fun getApiService(context: Context): ApiService {
         val token = Preference.getToken(context)
@@ -25,6 +26,19 @@ object ApiConfig {
         val retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BASE_URL)
+            .client(client)
+            .build()
+        return retrofit.create(ApiService::class.java)
+    }
+
+    fun getNewsApiService(): ApiService {
+        val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        val client = OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor)
+            .build()
+        val retrofit = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(NEWS_URL)
             .client(client)
             .build()
         return retrofit.create(ApiService::class.java)

@@ -20,44 +20,108 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/avatar"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="8dp"
         app:civ_border_color="@color/white"
-        app:civ_border_width="6dp"
+        app:civ_border_width="4dp"
         app:layout_constraintBottom_toTopOf="@+id/bg_view"
-        app:layout_constraintEnd_toEndOf="@+id/bg_view"
-        app:layout_constraintStart_toStartOf="@+id/bg_view"
-        app:layout_constraintTop_toTopOf="@id/bg_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bg_view"
         tools:src="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
         android:ellipsize="end"
-        android:gravity="center"
+        android:textColor="@color/white"
         android:maxLines="1"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/bg_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/avatar"
+        app:layout_constraintStart_toEndOf="@+id/avatar"
         tools:text="@tools:sample/full_names" />
 
     <TextView
         android:id="@+id/tv_id"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
         android:ellipsize="end"
-        android:gravity="center"
+        android:fontFamily="sans-serif"
         android:maxLines="1"
-        android:layout_marginTop="4dp"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/tv_name"
+        android:textColor="@color/dark_400"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tv_name"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name"
+        app:layout_constraintTop_toTopOf="@+id/bg_view"
         tools:text="@tools:sample/us_zipcodes" />
+
+    <TextView
+        android:id="@+id/tv_title_news"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/ic_rounded_background"
+        android:backgroundTint="@color/grey_200"
+        android:drawablePadding="4dp"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="6dp"
+        android:text="@string/news"
+        android:textColor="@color/dark_400"
+        app:drawableStartCompat="@drawable/ic_book"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avatar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_news"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_news"
+        tools:listitem="@layout/item_news" />
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/progress_profile"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_news">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/shimmer_profile_placeholder" />
+
+                <include layout="@layout/shimmer_profile_placeholder" />
+
+                <include layout="@layout/shimmer_profile_placeholder" />
+
+                <include layout="@layout/shimmer_profile_placeholder" />
+
+                <include layout="@layout/shimmer_profile_placeholder" />
+
+            </LinearLayout>
+        </ScrollView>
+    </com.facebook.shimmer.ShimmerFrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

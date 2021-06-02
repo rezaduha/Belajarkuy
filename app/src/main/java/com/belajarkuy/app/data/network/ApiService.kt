@@ -21,8 +21,17 @@ interface ApiService {
 //    suspend fun getRecommendationBySubject(@Path("user_id") userId: Int, @Path("subject") subject: String): DetailModuleResponse
 
     @POST("/module/{module_id}")
-    suspend fun submitAnswer(@Path("module_id") moduleId: Int, @Body moduleRequest: List<ModuleRequest>): ModuleRequest
+    suspend fun submitAnswer(
+        @Path("module_id") moduleId: Int,
+        @Body moduleRequest: List<ModuleRequest>
+    ): ModuleRequest
 
+    @GET("top-headlines")
+    suspend fun getNews(
+        @Query("country") country: String = "id",
+        @Query("category") category: String = "science",
+        @Query("apiKey") apiKey: String = "4b7abda9e69f41579a797be412b6fd7e",
+    ): NewsResponse
 
 
     // empty competency endpoint = 2176bcc5-3545-46f6-8e77-a3fb9031f7b2
@@ -38,5 +47,8 @@ interface ApiService {
     suspend fun getModuleById(): DetailModuleResponse
 
     @GET("/module/{user_id}/{subject}")
-    suspend fun getRecommendationBySubject(@Path("user_id") userId: Int, @Path("subject") subject: String): DetailModuleResponse
+    suspend fun getRecommendationBySubject(
+        @Path("user_id") userId: Int,
+        @Path("subject") subject: String
+    ): DetailModuleResponse
 }

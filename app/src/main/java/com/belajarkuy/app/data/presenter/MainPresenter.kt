@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 class MainPresenter(private val view: GeneralView, private val context: Context) {
 
     private val api = ApiConfig.getApiService(context)
+    private val newsApi = ApiConfig.getNewsApiService()
 
     fun continueWithGoogle(authRequest: AuthRequest) {
         CoroutineScope(Dispatchers.Main).launch {
@@ -89,6 +90,20 @@ class MainPresenter(private val view: GeneralView, private val context: Context)
         view.showLoading()
         CoroutineScope(Dispatchers.Main).launch {
             val request = api.submitAnswer(moduleId, moduleRequest)
+            try {
+                val response = request
+                view.success(response)
+            } catch (e: Exception) {
+                view.error(e)
+            }
+            view.hideLoading()
+        }
+    }
+
+    fun getNews() {
+        view.showLoading()
+        CoroutineScope(Dispatchers.Main).launch {
+            val request = newsApi.getNews()
             try {
                 val response = request
                 view.success(response)
