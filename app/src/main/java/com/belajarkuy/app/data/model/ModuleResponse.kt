@@ -23,9 +23,6 @@ data class ModulesItem(
 	@field:SerializedName("duration")
 	val duration: Int,
 
-	@field:SerializedName("backdrop_path")
-	val backdropPath: String,
-
 	@field:SerializedName("total_questions")
 	val totalQuestions: Int,
 
