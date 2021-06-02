@@ -27,5 +27,5 @@ data class CompetencyItem(
 	val subject: String,
 
 	@field:SerializedName("progress")
-	val progress: Int
+	val progress: Float
 ) : Parcelable
