@@ -13,11 +13,11 @@ data class AuthRequest(
 	@field:SerializedName("name")
 	val name: String?,
 
-	@field:SerializedName("photo_url")
-	val photoUrl: String?,
-
 	@field:SerializedName("email")
 	val email: String?,
+
+	@field:SerializedName("photo_url")
+	val photoUrl: String?,
 
 	@field:SerializedName("token")
 	val token: String?
