@@ -1,26 +1,17 @@
 package com.belajarkuy.app.data.network
 
-import android.content.Context
-import com.belajarkuy.app.utils.Preference
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
-    const val BASE_URL = "https://mocki.io/v1/"
+    const val BASE_URL = "belajarkuy-314312.et.r.appspot.com/api/"
     const val NEWS_URL = "https://newsapi.org/v2/"
 
-    fun getApiService(context: Context): ApiService {
-        val token = Preference.getToken(context)
+    fun getApiService(): ApiService {
         val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         val client = OkHttpClient.Builder()
-            .addInterceptor { chain ->
-                val request = chain.request()
-                    .newBuilder()
-                    .addHeader("token", token.toString()).build()
-                chain.proceed(request)
-            }
             .addNetworkInterceptor(loggingInterceptor)
             .build()
         val retrofit = Retrofit.Builder()
