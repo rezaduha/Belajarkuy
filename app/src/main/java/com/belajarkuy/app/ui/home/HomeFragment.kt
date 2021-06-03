@@ -1,5 +1,6 @@
 package com.belajarkuy.app.ui.home
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.belajarkuy.app.R
 import com.belajarkuy.app.data.model.CompetencyItem
 import com.belajarkuy.app.data.model.CompetencyResponse
 import com.belajarkuy.app.data.presenter.MainPresenter
 import com.belajarkuy.app.databinding.FragmentHomeBinding
+import com.belajarkuy.app.ui.quiz.QuizActivity
 import com.belajarkuy.app.view.GeneralView
 import com.bumptech.glide.Glide
 import com.github.mikephil.charting.data.RadarData
@@ -20,6 +23,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class HomeFragment : Fragment(), GeneralView, RecommendationAdapter.Listener {
 
@@ -76,6 +80,7 @@ class HomeFragment : Fragment(), GeneralView, RecommendationAdapter.Listener {
 
     private fun loadDataCompetency() {
         presenter = MainPresenter(this, requireContext())
+//        presenter.getEmptyCompetency()
         presenter.getCompetency()
     }
 
@@ -141,6 +146,15 @@ class HomeFragment : Fragment(), GeneralView, RecommendationAdapter.Listener {
 
     override fun empty() {
         binding.viewEmpty.root.visibility = View.VISIBLE
+        binding.viewEmpty.btnQuickTrain.setOnClickListener {
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle(resources.getString(R.string.start_now))
+                .setNegativeButton(resources.getString(R.string.cancel), null)
+                .setPositiveButton(resources.getString(R.string.accept)) { _, _ ->
+                    startActivity(Intent(context, QuizActivity::class.java))
+                }
+                .show()
+        }
     }
 
     override fun onDestroy() {

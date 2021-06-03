@@ -1,9 +1,11 @@
 package com.belajarkuy.app.ui.quiz
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
+import com.belajarkuy.app.MainActivity
 import com.belajarkuy.app.data.model.DetailModuleResponse
 import com.belajarkuy.app.data.model.QuestionsItem
 import com.belajarkuy.app.data.presenter.MainPresenter
@@ -44,7 +46,6 @@ class QuizActivity : AppCompatActivity(), GeneralView {
             }
 
             override fun onFinish() {
-                // post all answers to backend
                 finish()
             }
         }

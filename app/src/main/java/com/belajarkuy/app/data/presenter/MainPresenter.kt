@@ -27,51 +27,6 @@ class MainPresenter(private val view: GeneralView, private val context: Context)
         }
     }
 
-//    fun getCompetency(userId: Int) {
-//        view.showLoading()
-//        CoroutineScope(Dispatchers.Main).launch {
-//            val request = api.getCompetency(userId)
-//            try {
-//                val response = request
-//                view.success(response)
-//                if (response.results.isEmpty()) {
-//                    view.empty()
-//                }
-//            } catch (e: Exception) {
-//                view.error(e)
-//            }
-//            view.hideLoading()
-//        }
-//    }
-//
-//    fun getAllModule() {
-//        view.showLoading()
-//        CoroutineScope(Dispatchers.Main).launch {
-//            val request = api.getAllModule()
-//            try {
-//                val response = request
-//                view.success(response)
-//            } catch (e: Exception) {
-//                view.error(e)
-//            }
-//            view.hideLoading()
-//        }
-//    }
-//
-//    fun getModuleById(moduleId: Int) {
-//        view.showLoading()
-//        CoroutineScope(Dispatchers.Main).launch {
-//            val request = api.getModuleById(moduleId)
-//            try {
-//                val response = request
-//                view.success(response)
-//            } catch (e: Exception) {
-//                view.error(e)
-//            }
-//            view.hideLoading()
-//        }
-//    }
-
     fun getRecommendationBySubject(userId: Int, subject: String) {
         view.showLoading()
         CoroutineScope(Dispatchers.Main).launch {
@@ -100,13 +55,16 @@ class MainPresenter(private val view: GeneralView, private val context: Context)
         }
     }
 
-    fun getNews() {
+    fun getCompetency() {
         view.showLoading()
         CoroutineScope(Dispatchers.Main).launch {
-            val request = newsApi.getNews()
+            val request = api.getCompetency()
             try {
                 val response = request
                 view.success(response)
+                if (response.results.isEmpty()) {
+                    view.empty()
+                }
             } catch (e: Exception) {
                 view.error(e)
             }
@@ -114,11 +72,10 @@ class MainPresenter(private val view: GeneralView, private val context: Context)
         }
     }
 
-    // just for testing
-    fun getCompetency() {
+    fun getEmptyCompetency() {
         view.showLoading()
         CoroutineScope(Dispatchers.Main).launch {
-            val request = api.getCompetency()
+            val request = api.getEmptyCompetency()
             try {
                 val response = request
                 view.success(response)
@@ -156,6 +113,20 @@ class MainPresenter(private val view: GeneralView, private val context: Context)
             } catch (e: Exception) {
                 view.error(e)
             }
+        }
+    }
+
+    fun getNews() {
+        view.showLoading()
+        CoroutineScope(Dispatchers.Main).launch {
+            val request = newsApi.getNews()
+            try {
+                val response = request
+                view.success(response)
+            } catch (e: Exception) {
+                view.error(e)
+            }
+            view.hideLoading()
         }
     }
 }

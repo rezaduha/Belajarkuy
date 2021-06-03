@@ -6,7 +6,6 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.belajarkuy.app.MainActivity
 import com.belajarkuy.app.R
-import com.belajarkuy.app.data.model.AuthRequest
 import com.belajarkuy.app.data.presenter.MainPresenter
 import com.belajarkuy.app.databinding.ActivityLoginBinding
 import com.belajarkuy.app.utils.Preference
@@ -73,13 +72,6 @@ class LoginActivity : AppCompatActivity(), GeneralView {
         try {
             val account = completedTask.getResult(ApiException::class.java)
             Preference.saveToken(this, account?.idToken!!)
-//            val authData = AuthRequest(account.displayName, account.id, account.photoUrl.toString(),  account.email, account.idToken)
-//            presenter.continueWithGoogle(authData)
-            Log.d("extra_token", account.id.toString())
-            Log.d("extra_token", account.email.toString())
-            Log.d("extra_token", account.displayName.toString())
-            Log.d("extra_token", account.photoUrl.toString())
-            Log.d("extra_token", account.idToken.toString())
             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
         } catch (e: ApiException) {
             Log.w("onFailure", "signInResult:failed code=" + e.statusCode)

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -18,13 +17,15 @@
         app:lottie_fileName="emptybox.json"
         app:lottie_loop="true" />
 
-    <TextView
-        android:id="@+id/tv_empty"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_quick_train"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:text="@string/no_data"
+        android:textStyle="bold"
+        app:cornerRadius="50dp"
+        android:text="@string/quick_train"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lottieAnimationView2" />
