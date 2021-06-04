@@ -80,10 +80,10 @@ class MainPresenter(private val view: GeneralView) {
         }
     }
 
-    fun submitAnswer(moduleId: Int, moduleRequest: List<ModuleRequest>) {
+    fun submitAnswer(userId: String, moduleRequest: List<ModuleRequest>) {
         view.showLoading()
         CoroutineScope(Dispatchers.Main).launch {
-            val data = api.submitAnswer(moduleId, moduleRequest)
+            val data = api.submitAnswer(userId, moduleRequest)
             try {
                 view.success(data)
             } catch (e: Exception) {

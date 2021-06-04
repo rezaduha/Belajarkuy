@@ -25,7 +25,7 @@ interface ApiService {
 
     @POST("module/{user_id}")
     suspend fun submitAnswer(
-        @Path("user_id") userId: Int,
+        @Path("user_id") userId: String,
         @Body moduleRequest: List<ModuleRequest>
     ): ModuleRequest
 
